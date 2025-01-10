@@ -17,6 +17,7 @@
 
 namespace Tyra {
 
+class Texture;
 class MeshMaterial {
  public:
   explicit MeshMaterial(const MeshBuilderData& data, const u32& materialIndex);
@@ -28,6 +29,7 @@ class MeshMaterial {
   std::string name;
   std::optional<std::string> textureName;
   Color ambient;
+  Texture* texture;
 
   std::vector<MeshMaterialFrame*> frames;
 
