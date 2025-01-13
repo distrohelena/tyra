@@ -151,19 +151,13 @@ StaPipColorBag* StaticPipeline::getColorBag(
 
 StaPipTextureBag* StaticPipeline::getTextureBag(
     const MeshMaterial* material, const MeshMaterialFrame* materialFrame) {
-  if (!materialFrame->textureCoords || !material->textureName.has_value())
+  if (!materialFrame->textureCoords || !material->texture) {
     return nullptr;
+  }
 
   auto* result = new StaPipTextureBag();
 
-  result->texture =
-      rendererCore->texture.repository.getByMeshMaterialId(material->id);
-
-  TYRA_ASSERT(result->texture, "Texture for material: ", material->name,
-              "Id: ", material->id,
-              "Was not found in texture repository! Did you forget to add "
-              "texture or disable texture coords loading in mesh?");
-
+  result->texture = material->texture;
   result->coordinates = materialFrame->textureCoords;
 
   return result;

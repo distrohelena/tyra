@@ -57,13 +57,13 @@ MeshMaterialFrame::MeshMaterialFrame(const MeshBuilderData& data,
     normals = nullptr;
   }
 
-  if (material->texturePath.has_value()) {
+  //if (material->texturePath.has_value()) {
     textureCoords = frame->textureCoords;
-  } else {
-    if (frame->textureCoords != nullptr) delete[] frame->textureCoords;
+  // } else {
+  //   if (frame->textureCoords != nullptr) delete[] frame->textureCoords;
 
-    textureCoords = nullptr;
-  }
+  //   textureCoords = nullptr;
+  // }
 
   if (data.loadLightmap) {
     colors = frame->colors;
