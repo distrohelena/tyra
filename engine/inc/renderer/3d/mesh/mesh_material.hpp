@@ -27,7 +27,6 @@ class MeshMaterial {
   bool isMother, lightmapFlag;
   u32 id;
   std::string name;
-  std::optional<std::string> textureName;
   Color ambient;
   Texture* texture;
 

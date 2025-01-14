@@ -106,7 +106,7 @@ void DynamicPipeline::render(const DynamicMesh* mesh,
     auto* frameTo = material->frames[mesh->animation.getState().nextFrame];
 
     auto partSize = core.getMaxVertCountByParams(
-        options && options->lighting, material->textureName.has_value());
+        options && options->lighting, material->texture);
 
     u32 partsCount = ceil(frameFrom->count / static_cast<float>(partSize));
 
@@ -117,15 +117,15 @@ void DynamicPipeline::render(const DynamicMesh* mesh,
 
     Texture* texture = nullptr;
 
-    if (material->textureName.has_value()) {
-      texture =
-          rendererCore->texture.repository.getByMeshMaterialId(material->id);
+    // if (material->textureName.has_value()) {
+    //   texture =
+    //       rendererCore->texture.repository.getByMeshMaterialId(material->id);
 
-      TYRA_ASSERT(texture, "Texture for material: ", material->name,
-                  "Id: ", material->id,
-                  "Was not found in texture repository! Did you forget to add "
-                  "texture or disable texture coords loading in mesh?");
-    }
+    //   TYRA_ASSERT(texture, "Texture for material: ", material->name,
+    //               "Id: ", material->id,
+    //               "Was not found in texture repository! Did you forget to add "
+    //               "texture or disable texture coords loading in mesh?");
+    // }
 
     for (u32 k = 0; k < partsCount; k++) {
       auto& buffer = buffers[bufferIndex];

@@ -41,12 +41,12 @@ MeshMaterial::MeshMaterial(const MeshBuilderData& data,
   ambient.set(material->ambient);
   name = material->name;
 
-  if (material->texturePath.has_value()) {
-    auto textureFilename =
-        FileUtils::getFilenameFromPath(material->texturePath.value());
+//   if (material->texturePath.has_value()) {
+//     auto textureFilename =
+//         FileUtils::getFilenameFromPath(material->texturePath.value());
 
-    textureName = FileUtils::getFilenameWithoutExtension(textureFilename);
-  }
+//     textureName = FileUtils::getFilenameWithoutExtension(textureFilename);
+//   }
 
   TYRA_ASSERT(name.length() > 0, "MeshMaterial name cannot be empty");
 
@@ -79,7 +79,7 @@ MeshMaterial::MeshMaterial(const MeshMaterial& mesh) {
 
   lightmapFlag = mesh.lightmapFlag;
   name = mesh.name;
-  textureName = mesh.textureName;
+//   textureName = mesh.textureName;
   ambient.set(128.0F, 128.0F, 128.0F, 128.0F);
 
   for (u32 i = 0; i < mesh.frames.size(); i++) {
@@ -122,9 +122,9 @@ std::string MeshMaterial::getPrint(const char* name) const {
   res << "Id: " << id << ", " << std::endl;
   res << "Name: " << this->name << ", " << std::endl;
 
-  if (textureName.has_value()) {
-    res << "Texture path: " << textureName.value() << ", " << std::endl;
-  }
+//   if (textureName.has_value()) {
+//     res << "Texture path: " << textureName.value() << ", " << std::endl;
+//   }
 
   res << "Frames count: " << frames.size() << ", " << std::endl;
   res << "Lightmap?: " << static_cast<u32>(lightmapFlag) << std::endl;
